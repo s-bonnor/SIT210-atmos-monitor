@@ -142,6 +142,7 @@ void logToSerial() {
 // Check if an alert needs to be sent
 void checkAlert() {
     if (alertSent) return;
+    if (!Particle.connected()) return;
     bool sendAlert = false;
     if (CO2Avg > CO2AlertLevel) sendAlert = true;
     if (temperatureAvg > TemperatureAlertLevel) sendAlert = true;
